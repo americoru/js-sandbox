@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array Exercises</title>
+  </head>
+  <body>
+    
+
+    <script>
+      function miniMax(nums) {
+        if (nums.length === 0)
+          return {min: null, max: null};
+
+        let min, max;
+        min = max = nums[0];
+        for (num of nums) {
+          if (num < min)
+            min = num;
+          if (num > max)
+            max = num;
+        }
+
+        return {min: min, max: max};
+      }
+
+      console.log(miniMax([-2, 3, -5, 7, 10]))
+      console.log(miniMax([]))
+      console.log(miniMax([3]))
+
+      function countWords(words) {
+        const dictCount = {};
+        for (word of words) {
+          if (dictCount[word]) {
+            dictCount[word] += 1;
+          } else {
+            dictCount[word] = 1;
+          }
+        }
+        return dictCount;
+      }
+      console.log(countWords(['apple', 'grape', 'apple', 'apple']))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+
+    <script>
+      /*
+      const product = {
+        name: 'socks',
+        price: 1090,
+        color: 'green'
+      };
+      console.log(product);
+      console.log(typeof product);
+      console.log(typeof product.name);
+      console.log(product.price);
+
+      product.name = 'jacket';
+      console.log(product);
+      product.newProperty = true;
+      console.log(product);
+      delete product.newProperty;
+      console.log(product);
+
+      const product2 = {
+        name: 'shirt',
+        ['delivery-time']: '1 day',
+        rating: {
+          stars: 4.5,
+          count: 120
+        },
+        fun: function function1() {
+          console.log('function inside object');
+        }
+      };
+      console.log(product2.name);
+      console.log(product2['name']);
+      console.log(product2['delivery-time']);
+      product2['test'] = 'test value';
+      console.log(product2);
+      product2.fun();
+      console.log(typeof product2.fun)
+
+      console.log(JSON.stringify(product2));
+      const jsonString = JSON.stringify(product2);
+      console.log(JSON.parse(jsonString));
+      */
+
+      console.log('hello'.length);
+      console.log('hello'.toUpperCase());
+
+      const object1 = {
+        message: 'hello'
+      };
+
+      const object2 = object1;
+
+      object2.message = 'bye';
+
+      console.log(object1);
+      console.log(object2);
+
+      const object3 = {
+        message: 'bye'
+      };
+
+      console.log(object1 === object3);
+      console.log(object1 === object2);
+
+      const object4 = {
+        message: 'bye',
+        price: 799
+      };
+      // const message = object4.message;
+      let { message, price } = object4;
+      console.log(message, price);
+      console.log(object4);
+
+      const object5 = {
+        // message: message
+        message,
+        // method: function function1() {
+        //   console.log('method');
+        // }
+        method() {
+          console.log('method shorthand');
+        }
+      };
+      message = 'lol';
+      console.log(object5);
+      object5.method();
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Exercises</title>
+  </head>
+  <body>
+    <button class="js-9a">9a</button>
+    <button class="js-9b">9b</button>
+    <p></p>
+    <button class="js-heads" onclick="flipCoin('heads');">heads</button>
+    <button class="js-tails" onclick="flipCoin('tails');">tails</button>
+    <p class="js-choice"></p>
+    <input placeholder="Name" class="js-name" onkeydown="greetOnKeyDown(event);">
+    <button onclick="greet();">Submit</button>
+    <p class="js-greet"></p>
+
+    <script>
+      function greetOnKeyDown(event) {
+        if (event.key === 'Enter') greet();
+      }
+      function greet() {
+        const inputElement = document.querySelector('.js-name');
+        document.querySelector('.js-greet')
+          .innerHTML = `Your name is: ${inputElement.value}!`;
+      }
+      function flipCoin(side) {
+        document.querySelector('.js-choice')
+          .innerHTML = `You chose: ${side}`;
+      }
+      const buttonElement = document.querySelector('.js-9a');
+      console.log(buttonElement);
+
+      document.querySelector('.js-9b')
+        .innerHTML = '9b done!';
+    </script>
+  </body>
+</html>

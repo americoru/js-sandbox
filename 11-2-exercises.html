@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array Exercises</title>
+  </head>
+  <body>
+    
+
+    <script>
+      function findIndex(words, searchWord) {
+        for (let i = 0; i < words.length; i++) {
+        if (words[i] == searchWord) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      console.log(findIndex(['hellow', 'not', 'search', 'pear'], 'search'));
+      console.log(findIndex(['hellow', 'not', 'pear'], 'search'));
+
+
+      function removeEgg(foods, countToRemove = 1, reverse = false) {
+        const copyFoods = foods.slice();
+        const newFoods = [];
+        let removedCount = 0;
+        if (reverse)
+          copyFoods.reverse();
+        for (let i = 0; i < copyFoods.length; i++) {
+          if (copyFoods[i] === 'egg' && removedCount < countToRemove) {
+            removedCount += 1;
+            continue
+         }
+          newFoods.push(copyFoods[i]);
+        }
+        if (reverse)
+          newFoods.reverse();
+        return newFoods;
+      }
+      const foods = ['egg', 'apple', 'banana', 'egg', 'peach', 'egg'];
+      console.log(removeEgg(foods, 2, true));
+      console.log(foods)
+
+      function fizzBuzz(n) {
+        let message = '';
+        for (let i = 1 ; i <= n; i++) {
+          let num = i;
+          if (num % 3 === 0)
+            message += 'Fizz';
+          if (num % 5 === 0)
+            message += 'Buzz';
+          if (message) {
+            console.log(message);
+            message = '';
+            continue
+          }
+          console.log(num)
+        }
+      }
+      // fizzBuzz(20)
+      console.log('unique');
+      function unique(list) {
+        const dict = {};
+        for (el of list) {
+          dict[el] = true;
+        }
+        const result = [];
+        for (key in dict) {
+          result.push(key);
+        }
+        return result;
+      }
+      console.log(unique(foods))
+    </script>
+  </body>
+</html>

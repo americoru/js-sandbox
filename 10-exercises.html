@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .cart-button{
+        color: black;
+        background-color: rgb(255,216,20);
+        border-radius: 20px;
+        padding: 10px 60px;
+        border: none;
+        cursor: pointer;
+        /* font-weight: bold; */
+        font-size: 20px;
+      }
+      .request-button{
+        color: white;
+        /* background-color: rgb(230,230,230); */
+        background-color: black;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+      .schedule-button {
+        background-color: rgb(230,230,230);
+        border: none;
+        padding: 15px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .simple-button {
+        background-color: rgb(230,230,230);
+        color: black;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+      .is-toggled {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="cart-button">Add to Cart</button>
+    <p></p>
+    <button class="request-button">Request now</button>
+    <button class="schedule-button">Schedule for later</button>
+    <p></p>
+    <button class="js-button">Test</button>
+    <p></p>
+    <button class="js-gaming-button simple-button" onclick="handleClick('.js-gaming-button')">Gaming</button>
+    <button class="js-music-button simple-button" onclick="handleClick('.js-music-button')">Music</button>
+    <button class="js-tech-button simple-button" onclick="handleClick('.js-tech-button')">Tech</button>
+
+    
+    <script>
+      buttonElement = document.querySelector('.js-button');
+      console.log(buttonElement);
+      console.log(buttonElement.classList.contains('js-button'))
+
+      function handleClick(uniqueClassButton) {
+        const buttonElement = document.querySelector(uniqueClassButton);
+        if (buttonElement.classList.contains('is-toggled')) {
+          buttonElement.classList.remove('is-toggled');
+        } else {
+          buttonElement.classList.add('is-toggled');
+          disableButtonsExceptSpecified(uniqueClassButton);
+        }
+      }
+      function disableButtonsExceptSpecified(uniqueClassButton) {
+        const buttonClasses = [".js-gaming-button", ".js-music-button", ".js-tech-button"];
+        for (const buttonClass of buttonClasses) {
+          const buttonElement = document.querySelector(buttonClass);
+          if (buttonClass !== uniqueClassButton && buttonElement.classList.contains('is-toggled'))
+            buttonElement.classList.remove('is-toggled');
+        }
+      }
+    </script>
+  </body>
+</html>
