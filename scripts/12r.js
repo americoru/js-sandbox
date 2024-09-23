@@ -26,15 +26,18 @@ let intervalId;
 // };
 
 function autoPlay() {
+  const buttonElement = document.querySelector('.js-auto-play-button');
   if (!isAutoPlaying) {
     intervalId =setInterval(() => {
       const playerMove = pickComputerMove();
       playGame(playerMove)
     }, 1000);
     isAutoPlaying = true;
+    buttonElement.textContent = 'Stop Playing';
   } else {
     clearInterval(intervalId);
     isAutoPlaying = false;
+    buttonElement.textContent = 'Auto Play';
   }
 }
 
@@ -53,6 +56,11 @@ document.querySelector('.js-scissors-button')
     playGame('scissors');
   });
 
+document.querySelector('.js-auto-play-button')
+  .addEventListener('click', () => {
+    autoPlay();
+  });
+
 document.body.addEventListener('keydown', (event) => {
   if (event.key === 'r')
     playGame('rock');
@@ -60,8 +68,47 @@ document.body.addEventListener('keydown', (event) => {
     playGame('paper');
   else if (event.key === 's')
     playGame('scissors');
+  else if (event.key === 'a')
+    autoPlay();
+  else if (event.key === 'Backspace')
+    resetScore();
 });
 
+function resetScore() {
+  const divElement= document.querySelector('.js-confirmation-box');
+  divElement.innerHTML = `
+Are you sure you want to reset the score?
+<button class="yes-button js-yes-button">Yes</button>
+<button class="no-button js-no-button">No</button>
+`;
+
+  document.querySelector('.js-yes-button')
+  .addEventListener('click', () => {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.removeItem('score');
+    updateScoreElement();
+    hideConfirmationBox();    
+  });
+
+  document.querySelector('.js-no-button')
+  .addEventListener('click', () => {
+    hideConfirmationBox();
+  });
+};
+
+function hideConfirmationBox() {
+  const divElement= document.querySelector('.js-confirmation-box');
+  divElement.innerHTML = '';
+};
+
+
+
+document.querySelector('.js-reset-score-button')
+  .addEventListener('click', () => {
+    resetScore();
+  });
 
 function playGame(playerMove) {
   let computerMove = pickComputerMove();
